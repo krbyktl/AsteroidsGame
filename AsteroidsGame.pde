@@ -2,21 +2,19 @@ SpaceShip bob;
 public void setup() 
 {
   SpaceShip bob = new SpaceShip();
+  bob.setX(x);
+  bob.setY(y);
+  bob.setDirectionX(x);
+  bob.setDirectionY(y);
+  bob.setPointDirection(degrees);
 }
 public void draw() 
 {
-  bob.show();
+	bob.show();
 }
 class SpaceShip extends Floater  
 {   
-  int corners;  //the number of corners, a triangular floater has 3   
-  int[] xCorners;   
-  int[] yCorners;   
-  int myColor;   
-  double myCenterX, myCenterY; //holds center coordinates   
-  double myDirectionX, myDirectionY; //holds x and y coordinates of the vector for direction of travel   
-  double myPointDirection; 
-  SpaceShip()
+  public SpaceShip()
   {
   	corners = 8;
   	xCorners = new int[corners];
@@ -38,16 +36,16 @@ class SpaceShip extends Floater
   	xCorners[7] = 0;
   	yCorners[7] = -10;
   	myColor = 100;
-  	myCenterX = 0;
-  	myCenterY = 0;
-  	myDirectionX = 0;
-  	myDirectionY = 0;
-  	myPointDirection = 0;
+  	myCenterX = x;
+  	myCenterY = y;
+  	myDirectionX = x;
+  	myDirectionY = y;
+  	myPointDirection = degrees;
   }
-  public void setX(int x) {xCorners = x;}  
-  public int getX() {return xCorners;}
-  public void setY(int y) {yCorners = y;} 
-  public int getY() {return yCorners;}   
+  public void setX(int x) {myCenterX = x;}  
+  public int getX() {return myCenterX;}
+  public void setY(int y) {myCenterY = y;} 
+  public int getY() {return myCenterY;}   
   public void setDirectionX(double x) {myDirectionX = x;}
   public double getDirectionX() {return myDirectionX;} 
   public void setDirectionY(double y) {myDirectionY = y;}  
