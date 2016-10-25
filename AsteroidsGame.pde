@@ -1,20 +1,29 @@
-SpaceShip bob;
+Spaceship bob = new Spaceship();
 public void setup() 
 {
-  SpaceShip bob = new SpaceShip();
-  bob.setX(x);
-  bob.setY(y);
-  bob.setDirectionX(x);
-  bob.setDirectionY(y);
-  bob.setPointDirection(degrees);
+  size(600, 600);
 }
 public void draw() 
 {
+  background(0);
+  bob.setX(300);
+  bob.setY(300);
+  bob.setDirectionX(0);
+  bob.setDirectionY(0);
+  bob.setPointDirection(0);
 	bob.show();
 }
-class SpaceShip extends Floater  
+public void keyPressed()
+{
+  if(key == 'd')
+  {
+     bob.setX((int)(Math.random()*600));
+     bob.setY((int)(Math.random()*600));
+  }
+}
+class Spaceship extends Floater  
 {   
-  public SpaceShip()
+  public Spaceship()
   {
   	corners = 8;
   	xCorners = new int[corners];
@@ -35,17 +44,13 @@ class SpaceShip extends Floater
   	yCorners[6] = -3;
   	xCorners[7] = 0;
   	yCorners[7] = -10;
-  	myColor = 100;
-  	myCenterX = x;
-  	myCenterY = y;
-  	myDirectionX = x;
-  	myDirectionY = y;
-  	myPointDirection = degrees;
+          myColor = color(150, 150, 150);
+
   }
   public void setX(int x) {myCenterX = x;}  
-  public int getX() {return myCenterX;}
+  public int getX() {return (int)myCenterX;}
   public void setY(int y) {myCenterY = y;} 
-  public int getY() {return myCenterY;}   
+  public int getY() {return (int)myCenterY;}   
   public void setDirectionX(double x) {myDirectionX = x;}
   public double getDirectionX() {return myDirectionX;} 
   public void setDirectionY(double y) {myDirectionY = y;}  
