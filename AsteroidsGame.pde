@@ -1,24 +1,28 @@
 Spaceship bob = new Spaceship();
+Star[] night = new Star[200];
 public void setup() 
 {
   size(600, 600);
+  for(int i = 0; i < night.length; i++)
+  {
+  	night[i] = new Star();
+  }
 }
 public void draw() 
 {
   background(0);
-  bob.setX(300);
-  bob.setY(300);
-  bob.setDirectionX(0);
-  bob.setDirectionY(0);
-  bob.setPointDirection(0);
-	bob.show();
+  for(int i = 0; i < night.length; i++)
+  {
+  	night[i].show();
+  }
+  bob.move();
+  bob.show();
 }
 public void keyPressed()
 {
-  if(key == 'd')
+  if(key == 'q')
   {
-     bob.setX((int)(Math.random()*600));
-     bob.setY((int)(Math.random()*600));
+    bob.setDirectionX(0);
   }
 }
 class Spaceship extends Floater  
@@ -44,8 +48,12 @@ class Spaceship extends Floater
   	yCorners[6] = -3;
   	xCorners[7] = 0;
   	yCorners[7] = -10;
-          myColor = color(150, 150, 150);
-
+    myColor = color(150, 150, 150);
+    myCenterX = 300;
+    myCenterY = 300;
+    myDirectionX = 0;
+    myDirectionY = 0;
+    myPointDirection = 0;
   }
   public void setX(int x) {myCenterX = x;}  
   public int getX() {return (int)myCenterX;}
@@ -133,4 +141,14 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     }   
     endShape(CLOSE);  
   }   
-} 
+}
+class Star
+{
+	int corex, corey;
+	public Star()
+	{
+		corex = (Math.random()*600);
+		corey = (Math.random()*600);
+	}
+	public void sketch
+}
