@@ -13,16 +13,30 @@ public void draw()
   background(0);
   for(int i = 0; i < night.length; i++)
   {
-  	night[i].show();
+  	night[i].sketch();
   }
   bob.move();
   bob.show();
 }
 public void keyPressed()
 {
-  if(key == 'q')
+  if(key == 'a')
   {
-    bob.setDirectionX(0);
+    bob.rotate(myPointDirection+1);
+  }
+  if(key == 'd')
+  {
+  	bob.rotate((int)(Math.random()*360));
+  }
+  if(key == 'w')
+  {
+  	bob.accelerate(1);
+  }
+  if(key == 's')
+  {
+  	bob.setPointDirection((int)(Math.random()*360));
+  	bob.setX((int)(Math.random()*600));
+  	bob.setY((int)(Math.random()*600));
   }
 }
 class Spaceship extends Floater  
@@ -147,8 +161,12 @@ class Star
 	int corex, corey;
 	public Star()
 	{
-		corex = (Math.random()*600);
-		corey = (Math.random()*600);
+		corex = (int)(Math.random()*600);
+		corey = (int)(Math.random()*600);
 	}
-	public void sketch
+	public void sketch()
+	{
+		fill(255, 255, 0);
+  		ellipse(corex, corey, 4, 4);
+	}
 }
