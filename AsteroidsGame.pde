@@ -20,18 +20,22 @@ public void draw()
 }
 public void keyPressed()
 {
+  //Rotate clockwise
   if(key == 'a')
   {
-    bob.rotate(myPointDirection+1);
+    bob.rotate(5);
   }
+  //Rotate counterclockwise
   if(key == 'd')
   {
-  	bob.rotate((int)(Math.random()*360));
+  	bob.rotate(-5);
   }
+  //Accelerate
   if(key == 'w')
   {
-  	bob.accelerate(1);
+  	bob.accelerate(.5);
   }
+  //Hyperspace
   if(key == 's')
   {
   	bob.setPointDirection((int)(Math.random()*360));
