@@ -103,29 +103,38 @@ class Asteroid extends Floater
 		corners = 8;
   		xCorners = new int[corners];
   		yCorners = new int[corners];
-  		xCorners[0] = (int)(Math.random()*20)-5;
+  		xCorners[0] = 20;
  	 	yCorners[0] = 0;
-	  	xCorners[1] = 10;
-	  	yCorners[1] = 10;
+	  	xCorners[1] = 8;
+	  	yCorners[1] = 15;
   		xCorners[2] = 0;
-  		yCorners[2] = 15;
-  		xCorners[3] = -10;
-  		yCorners[3] = 10;
- 	 	xCorners[4] = -(int)(Math.random()*20)-1;
+  		yCorners[2] = 13;
+  		xCorners[3] = -15;
+  		yCorners[3] = 15;
+ 	 	xCorners[4] = -20;
   		yCorners[4] = 0;
-	  	xCorners[5] = -10;
- 	 	yCorners[5] = -10;
+	  	xCorners[5] = -13;
+ 	 	yCorners[5] = -15;
  	 	xCorners[6] = 0;
- 	 	yCorners[6] = -15;
- 	 	xCorners[7] = 10;
- 	 	yCorners[7] = -10;
+ 	 	yCorners[6] = -12;
+ 	 	xCorners[7] = 15;
+ 	 	yCorners[7] = -15;
 		myColor = color(150, 150, 150);
 	   	myCenterX = (int)(Math.random()*600);
   		myCenterY = (int)(Math.random()*600);
-	   	myDirectionX = (int)(Math.random()*2)-1;
-  		myDirectionY = (int)(Math.random()*2)-1;
+	   	if(Math.random() < .5)
+	   		myDirectionX = 1;
+	   	else 
+	   		myDirectionX = -1;
+  		if(Math.random() < .5)
+  			myDirectionY = 1;
+  		else
+  			myDirectionY = -1;
 	    myPointDirection = 0;
-	    rotSpeed = (int)(Math.random()*2)-1;
+	    if(Math.random() < .5)
+	    	rotSpeed = 1;
+	    else
+	    	rotSpeed = -1;
 	}
   public void setX(int x) {myCenterX = x;}  
   public int getX() {return (int)myCenterX;}
