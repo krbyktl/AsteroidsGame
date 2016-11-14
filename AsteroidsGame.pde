@@ -28,6 +28,7 @@ public void draw()
   if(dist(bob.getX(), bob.getY(), sue.get(j).getX(), sue.get(j).getY())<20)
   {
     sue.remove(j);
+    //gravel explosion
   }
   }
 }
@@ -48,8 +49,13 @@ public void keyPressed()
   {
   	bob.accelerate(.5);
   }
-  //Hyperspace
+  //Deccelerate
   if(key == 's')
+  {
+  	bob.accelerate(-.5);
+  }
+  //Hyperspace
+  if(key == 'q')
   {
   	bob.setPointDirection((int)(Math.random()*360));
   	bob.setX((int)(Math.random()*600));
@@ -241,6 +247,6 @@ class Star
 	public void sketch()
 	{
 		fill(255, 255, 0);
-  		ellipse(corex, corey, 4, 4);
+  		ellipse(corex, corey, (int)(Math.random()*4)+1, (int)(Math.random()*4)+1);
 	}
 }
