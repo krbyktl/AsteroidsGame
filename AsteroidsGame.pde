@@ -1,5 +1,6 @@
 Spaceship bob = new Spaceship();
 Star[] night = new Star[100];
+Debris[] gravel = new Debris[50];
 ArrayList <Asteroid> sue = new ArrayList <Asteroid>();
 public void setup() 
 {
@@ -10,6 +11,10 @@ public void setup()
   }
   for(int j = 0; j < 10; j++)
   sue.add(j, new Asteroid());
+  for(int k = 0; k < gravel.length; k++)
+  {
+    gravel[k] = new Debris();
+  }
 }
 public void draw() 
 {
@@ -28,7 +33,11 @@ public void draw()
   if(dist(bob.getX(), bob.getY(), sue.get(j).getX(), sue.get(j).getY())<20)
   {
     sue.remove(j);
-    //gravel explosion
+    for(int k = 0; k < gravel.length; k++)
+    {
+      gravel[k].move();
+      gravel[k].show();
+    }
   }
   }
 }
@@ -249,4 +258,32 @@ class Star
 		fill(255, 255, 0);
   		ellipse(corex, corey, (int)(Math.random()*4)+1, (int)(Math.random()*4)+1);
 	}
+}
+class Debris
+{
+  double dX, dY, dTheta, dSpeed;
+  color dColor;
+  Debris()
+  {
+    for(int j = 0; j < sue.size(); j++)
+    {
+      dX = sue.get(j).getX();
+      dY = sue.get(j).getY();
+    }
+    dTheta = (double)(Math.random()*(2*Math.PI));
+    dSpeed = (double)(Math.random()*10);
+    dColor = (100);
+  }
+  public void move()
+  {
+      dX = dX + dSpeed*Math.cos(dTheta);
+      dY = dY + dSpeed*Math.sin(dTheta);
+  }
+  public void show()
+  {
+    noStroke();
+    fill(dColor);
+    ellipse((float)dX, (float)dY, 10, 10);
+  }
+
 }
