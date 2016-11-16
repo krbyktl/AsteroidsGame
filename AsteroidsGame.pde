@@ -35,8 +35,8 @@ public void draw()
     sue.remove(j);
     for(int k = 0; k < gravel.length; k++)
     {
-      gravel[k].move();
-      gravel[k].show();
+      gravel[k].explode();
+      gravel[k].paint();
     }
   }
   }
@@ -265,21 +265,18 @@ class Debris
   color dColor;
   Debris()
   {
-    for(int j = 0; j < sue.size(); j++)
-    {
-      dX = sue.get(j).getX();
-      dY = sue.get(j).getY();
-    }
+    dX = 250;
+    dY = 250;
     dTheta = (double)(Math.random()*(2*Math.PI));
     dSpeed = (double)(Math.random()*10);
     dColor = (100);
   }
-  public void move()
+  public void explode()
   {
       dX = dX + dSpeed*Math.cos(dTheta);
       dY = dY + dSpeed*Math.sin(dTheta);
   }
-  public void show()
+  public void paint()
   {
     noStroke();
     fill(dColor);
