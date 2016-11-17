@@ -1,6 +1,6 @@
 Spaceship bob = new Spaceship();
 Star[] night = new Star[100];
-Debris[] gravel = new Debris[50];
+ArrayList <Debris> gravel = new ArrayList <Debris>();
 ArrayList <Asteroid> sue = new ArrayList <Asteroid>();
 public void setup() 
 {
@@ -11,10 +11,6 @@ public void setup()
   }
   for(int j = 0; j < 10; j++)
   sue.add(j, new Asteroid());
-  for(int k = 0; k < gravel.length; k++)
-  {
-    gravel[k] = new Debris();
-  }
 }
 public void draw() 
 {
@@ -23,24 +19,10 @@ public void draw()
   {
   	night[i].sketch();
   }
-
   bob.move();
   bob.show();
-  for(int j = 0; j < sue.size(); j++)
-  {
-    sue.get(j).show();
-    sue.get(j).move();
-  if(dist(bob.getX(), bob.getY(), sue.get(j).getX(), sue.get(j).getY())<20)
-  {
-    sue.remove(j);
-    for(int k = 0; k < gravel.length; k++)
-    {
-      gravel[k].explode();
-      gravel[k].paint();
-    }
+  
   }
-  }
-}
 public void keyPressed()
 {
   //Rotate clockwise
@@ -259,14 +241,23 @@ class Star
   		ellipse(corex, corey, (int)(Math.random()*4)+1, (int)(Math.random()*4)+1);
 	}
 }
-class Debris
+class Debris extends Asteroid
 {
   double dX, dY, dTheta, dSpeed;
   color dColor;
-  Debris()
+  public Debris(int dX, int dY)
   {
-    dX = 250;
-    dY = 250;
+for(int j = 0; j < sue.size(); j++)
+  {
+    sue.get(j).show();
+    sue.get(j).move();
+  if(dist(bob.getX(), bob.getY(), sue.get(j).getX(), sue.get(j).getY())<20)
+  {
+    Asteroid rob = sue.remove(j);
+    int a = rob.getX();
+    int b = rob.getY();
+    sue.add(new Debris(a, b));  
+  }
     dTheta = (double)(Math.random()*(2*Math.PI));
     dSpeed = (double)(Math.random()*10);
     dColor = (100);
