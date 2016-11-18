@@ -1,6 +1,5 @@
 Spaceship bob = new Spaceship();
 Star[] night = new Star[100];
-ArrayList <Debris> gravel = new ArrayList <Debris>();
 ArrayList <Asteroid> sue = new ArrayList <Asteroid>();
 public void setup() 
 {
@@ -31,7 +30,6 @@ public void draw()
     int a = rob.getX();
     int b = rob.getY();
     sue.add(new Debris(a, b));
-
   }
   }
   }
@@ -255,14 +253,10 @@ class Star
 }
 class Debris extends Asteroid
 {
-  double dX, dY, dTheta, dSpeed;
-  color dColor;
+  double dX, dY;
   public Debris(int dX, int dY)
   {
-    getX();
-    getY();
-    dTheta = (double)(Math.random()*(2*Math.PI));
-    dSpeed = (double)(Math.random()*10);
-    dColor = (100);
+    setX(dX);
+    setY(dY);
   }
 }
