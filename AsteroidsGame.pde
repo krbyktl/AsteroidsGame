@@ -1,6 +1,7 @@
 Spaceship bob = new Spaceship();
 Star[] night = new Star[100];
 ArrayList <Asteroid> sue = new ArrayList <Asteroid>();
+ArrayList <Bullet> shell = new ArrayList <Bullet>();
 public void setup() 
 {
   size(600, 600);
@@ -20,6 +21,8 @@ public void draw()
   }
   bob.move();
   bob.show();
+  shell.show();
+  shell.move();
   for(int j = 0; j < sue.size(); j++)
   {
     sue.get(j).show();
