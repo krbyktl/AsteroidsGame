@@ -19,10 +19,18 @@ class Bullet extends Floater
   public double getDirectionY() {return myDirectionY;}
   public void setPointDirection(int degrees) {myPointDirection = degrees;}   
   public double getPointDirection() {return myPointDirection;} 
-  public void show ()
+  public void show()
   {
-		fill(200);
+		fill(70, 248, 255);
 		noStroke();
-		ellipse((int)myCenterX, (int)myCenterY, 5, 5);
+		ellipse((int)myCenterX, (int)myCenterY, 7, 7);
+  }
+  public void move()
+  {
+    myCenterX+=myDirectionX;
+    myCenterY+=myDirectionY;
+    
+    if(myCenterX < 0)
+      shell.remove(bob);
   }
 }

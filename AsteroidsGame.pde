@@ -21,8 +21,6 @@ public void draw()
   }
   bob.move();
   bob.show();
-  shell.show();
-  shell.move();
   for(int j = 0; j < sue.size(); j++)
   {
     sue.get(j).show();
@@ -34,6 +32,11 @@ public void draw()
     int b = rob.getY();
     sue.add(new Debris(a, b));
   }
+  }
+  for(int l = 0; l < shell.size(); l++)
+  {
+     shell.get(l).show();
+     shell.get(l).move();
   }
   }
 public void keyPressed()
@@ -65,6 +68,11 @@ public void keyPressed()
   	bob.setX((int)(Math.random()*600));
   	bob.setY((int)(Math.random()*600));
   }
+  //Shoot
+  if(key == 'e')
+  {
+    shell.add(new Bullet(bob));
+  }
 }
 class Spaceship extends Floater  
 {   
@@ -89,7 +97,7 @@ class Spaceship extends Floater
   	yCorners[6] = -3;
   	xCorners[7] = 0;
   	yCorners[7] = -10;
-    myColor = color(0, 150, 250);
+    myColor = color(181, 238, 255);
     myCenterX = 300;
     myCenterY = 300;
     myDirectionX = 0;
@@ -131,7 +139,7 @@ class Asteroid extends Floater
  	 	yCorners[6] = -12;
  	 	xCorners[7] = 15;
  	 	yCorners[7] = -15;
-		myColor = color(150, 150, 150);
+		myColor = color(249, 8, 8);
 	   	myCenterX = (int)(Math.random()*600);
   		myCenterY = (int)(Math.random()*600);
 	   	if(Math.random() < .5)
@@ -250,8 +258,9 @@ class Star
 	}
 	public void sketch()
 	{
-		fill(255, 255, 0);
-  		ellipse(corex, corey, (int)(Math.random()*4)+1, (int)(Math.random()*4)+1);
+          noStroke();
+		fill(244, 80, 0);
+          ellipse(corex, corey, (int)(Math.random()*4)+1, (int)(Math.random()*4)+1);
 	}
 }
 class Debris extends Asteroid
