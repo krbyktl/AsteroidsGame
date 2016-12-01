@@ -21,6 +21,11 @@ public void draw()
   }
   bob.move();
   bob.show();
+    for(int l = 0; l < shell.size(); l++)
+  {
+     shell.get(l).show();
+     shell.get(l).move();
+  }
   for(int j = 0; j < sue.size(); j++)
   {
     sue.get(j).show();
@@ -32,11 +37,15 @@ public void draw()
     int b = rob.getY();
     sue.add(new Debris(a, b));
   }
-  }
-  for(int l = 0; l < shell.size(); l++)
+  for(int k = 0; k <shell.size(); k++)
   {
-     shell.get(l).show();
-     shell.get(l).move();
+     if(dist(shell.get(k).getX(), shell.get(k).getY(), sue.get(j).getX(), sue.get(j).getY()) < 30)
+     {
+       sue.remove(j);
+       shell.remove(k);
+       break;
+     }
+  }
   }
   }
 public void keyPressed()
