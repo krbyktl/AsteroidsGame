@@ -1,4 +1,5 @@
 Spaceship bob = new Spaceship();
+Healthbar life = new Healthbar();
 Star[] night = new Star[100];
 ArrayList <Asteroid> sue = new ArrayList <Asteroid>();
 ArrayList <Bullet> shell = new ArrayList <Bullet>();
@@ -21,6 +22,8 @@ public void draw()
   }
   bob.move();
   bob.show();
+  life.show();
+  life.move();
     for(int l = 0; l < shell.size(); l++)
   {
      shell.get(l).show();
@@ -279,5 +282,25 @@ class Debris extends Asteroid
   {
     setX(dX);
     setY(dY);
+  }
+}
+class Healthbar
+{
+  double fX, fY;
+  public Healthbar()
+  {
+    fX = 280;
+    fY = 325;
+  }
+  public void show()
+  {
+    stroke(150);
+    fill(72, 255, 0);
+    rect((int)fX, (int)fY, 30, 4);
+  }
+  public void move()
+  {
+    fX = bob.getX()-20;
+    fY = bob.getY()+25;
   }
 }
